@@ -5,7 +5,8 @@ http://arxiv.org/abs/1411.4555
 
 The training data is MSCOCO. I used GoogleNet to extract  images feature in addance (preprosessing), and then traind langauge model to generate caption.  
 
-More information is in my blog post. 
+More information will be in my blog post. 
+http://t-satoshi.blogspot.jp
 
 ##requirement
 chainer 1.5  
