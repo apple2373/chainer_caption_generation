@@ -198,7 +198,10 @@ def caption_generate(image_file_name):
     print("---genrated_sentence--")
 
     for predicted_word in genrated_sentence:
-        index=predicted_word.argmax(1)[0]
+        if gpu_id >=0:
+            index=cuda.to_cpu(predicted_word.argmax(1)[0])
+        else:
+            index=predicted_word.argmax(1)[0]
         print index2word[index]
         if index2word[index]=='<EOS>':
             break;
