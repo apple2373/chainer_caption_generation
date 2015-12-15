@@ -199,7 +199,7 @@ def caption_generate(image_file_name):
 
     for predicted_word in genrated_sentence:
         if gpu_id >=0:
-            index=cuda.to_cpu(predicted_word.argmax(1)[0])
+            index=cuda.to_cpu(predicted_word.argmax(1))[0]
         else:
             index=predicted_word.argmax(1)[0]
         print index2word[index]
