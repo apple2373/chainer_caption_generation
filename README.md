@@ -35,7 +35,7 @@ If you want to change, use -d option.
 ```
 
 
-##I wnat to train other data.
+##I wnat to train from other data.
 Sorry, current implementation does not suport it. You need to preprocess the data. Maybe you can read and modify the code. 
 
 ##I wnat to fine-tune CNN part. 
