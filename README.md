@@ -13,9 +13,10 @@ and some more packages.
 If you are new, I suggest you to install Anaconda and then install chainer.  
 
 ##I just want to generate caption!
-OK, first, save the all the folders. then, go to the codes2 folder.
-You can run 
+OK, first, you need to download the models and other preprosessed files.
+Then you can generate caption.
 ```
+bash download.sh
 cd codes
 python generate_caption.py -i ../images/test_image.jpg
 ```
