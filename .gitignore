@@ -1,0 +1,3 @@
+#gtignore 以外のファイルを全部無視する。
+.*
+!.gitignore
