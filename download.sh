@@ -11,7 +11,7 @@ fi
 if [ ! -f preprocessed_train_captions.pkl ]; then
     wget https://googledrive.com/host/0B046sNk0DhCDeEczcm1vaWlCTFk/work/preprocessed_train_captions.pkl
 fi
-if [! -d img_features ]; then
+if [ ! -d img_features ]; then
 	mkdir img_features
 fi
 cd img_features
@@ -23,6 +23,6 @@ if [ ! -f val_image_id2feature.pkl ]; then
 fi
 cd ../../
 cd models
-if [ ! -f val_image_id2feature.pkl ]; then
+if [ ! -f caption_model.chainer ]; then
     wget https://googledrive.com/host/0B046sNk0DhCDeEczcm1vaWlCTFk/models/caption_model.chainer
 fi
