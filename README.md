@@ -16,8 +16,8 @@ If you are new, I suggest you to install Anaconda and then install chainer.
 OK, first, save the all the folders. then, go to the codes2 folder.
 You can run 
 ```
-'cd codes'
-'python generate_caption.py -i ../images/test_image.jpg '
+cd codes
+python generate_caption.py -i ../images/test_image.jpg
 ```
 This generate a caption for ../images/test_image.jpg. If you want to use your image, you just have to indicate -i option to image that you want to generate captions. 
 
