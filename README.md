@@ -25,7 +25,7 @@ python generate_caption.py -i ../images/test_image.jpg
 ```
 This generate a caption for ../images/test_image.jpg. If you want to use your image, you just have to indicate -i option to image that you want to generate captions. 
 
-##I want to the model by myself.
+##I want to train the model by myself.
 I extracted the GoogleNet features and pickled, so you use it for training.  
 ```
  cd codes
