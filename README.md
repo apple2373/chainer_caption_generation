@@ -5,7 +5,7 @@ http://arxiv.org/abs/1411.4555
 
 The training data is MSCOCO. I used GoogleNet to extract  images feature in advance (preprocessed them before training), and then trained language model to generate caption.
 
-I made pre-trained model available. The model achieves CIDEr of 0.66 for the MSCOCO validation dataset. To achieve the better score, introducing beam search to generate image is first step (not implemented yet). Also, I think the CNN has to be fine-tuned.
+I made pre-trained model available. The model achieves CIDEr of 0.66 for the MSCOCO validation dataset. To achieve the better score, the use of beam search is first step (not implemented yet). Also, I think the CNN has to be fine-tuned.
 
 More information including some sample captions are in my blog post. 
 http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.html
