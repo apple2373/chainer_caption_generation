@@ -1,20 +1,22 @@
-#image cpation generation by chainer
+#image caption generation by chainer
 This codes are trying to reproduce the image captioning by google in CVPR 2015.
 Show and Tell: A Neural Image Caption Generator
 http://arxiv.org/abs/1411.4555
 
-The training data is MSCOCO. I used GoogleNet to extract  images feature in addance (preprosessing), and then traind langauge model to generate caption.  
+The training data is MSCOCO. I used GoogleNet to extract  images feature in advance (preprocessed them before training), and then trained language model to generate caption.
 
-More information will be in my blog post. 
-http://t-satoshi.blogspot.jp
+I made pre-trained model available. The model achieves CIDEr of 0.66 for the MSCOCO validation dataset. To achieve the better score, introducing beam search to generate image is first step (not implemented yet). Also, I think the CNN has to be fine-tuned.
+
+More information including same sample captions are in my blog post. 
+http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.html
 
 ##requirement
-chainer 1.5  
+chainer 1.5  http://chainer.org
 and some more packages.   
 If you are new, I suggest you to install Anaconda and then install chainer.  
 
 ##I just want to generate caption!
-OK, first, you need to download the models and other preprosessed files.
+OK, first, you need to download the models and other preprocessed files.
 Then you can generate caption.
 ```
 bash download.sh
@@ -24,7 +26,7 @@ python generate_caption.py -i ../images/test_image.jpg
 This generate a caption for ../images/test_image.jpg. If you want to use your image, you just have to indicate -i option to image that you want to generate captions. 
 
 ##I want to the model by myself.
-MSCOCO caption data is preprocessed and pickled, so you can train easily.  
+I extracted the GoogleNet features and pickled, so you use it for training.  
 ```
  cd codes
  python train_caption_model.py 
@@ -36,9 +38,8 @@ If you want to change, use -d option.
  python train_caption_model.py -d ./yourdirectory
 ```
 
+##I want to train from other data.
+Sorry, current implementation does not support it. You need to preprocess the data. Maybe you can read and modify the code. 
 
-##I wnat to train from other data.
-Sorry, current implementation does not suport it. You need to preprocess the data. Maybe you can read and modify the code. 
-
-##I wnat to fine-tune CNN part. 
-Sorry, current implementation does not suport it. Maybe you can read and modify the code. 
+##I want to fine-tune CNN part. 
+Sorry, current implementation does not support it. Maybe you can read and modify the code. 
