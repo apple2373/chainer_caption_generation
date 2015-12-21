@@ -16,7 +16,7 @@ and some more packages.
 If you are new, I suggest you to install Anaconda and then install chainer.  You can watch the video below. 
 
 ##I have a problem to prepare environment
-I  prepared a video to show how you prepare environment and generate captions on ubuntu. I used a virtual machine just just after installing ubuntu 14.04. If you imitate as in the video, you can generate captions. The process is almost the same for Mac. Windows is not suported because I cannot use it (Acutually chsiner does not officialy support windows). 
+I  prepared a video to show how you prepare environment and generate captions on ubuntu. I used a virtual machine just after installing ubuntu 14.04. If you imitate as in the video, you can generate captions. The process is almost the same for Mac. Windows is not suported because I cannot use it (Acutually chsiner does not officialy support windows). 
 https://drive.google.com/file/d/0B046sNk0DhCDUkpwblZPME1vQzg/edit
 
 ##I just want to generate caption!
