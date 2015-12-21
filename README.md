@@ -12,8 +12,12 @@ http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.h
 
 ##requirement
 chainer 1.5  http://chainer.org
-and some more packages.   
-If you are new, I suggest you to install Anaconda and then install chainer.  
+and some more packages.  
+If you are new, I suggest you to install Anaconda and then install chainer.  You can watch the video below. 
+
+##I have a problem to prepare environment
+I  prepared a video to show how you prepare environment and generate captions on ubuntu. I used a virtual machine just just after installing ubuntu 14.04. If you imitate as in the video, you can generate captions. The process is almost the same for Mac. Windows is not suported because I cannot use it (Acutually chsiner does not officialy support windows). 
+https://drive.google.com/file/d/0B046sNk0DhCDUkpwblZPME1vQzg/edit
 
 ##I just want to generate caption!
 OK, first, you need to download the models and other preprocessed files.
@@ -24,6 +28,8 @@ cd codes
 python generate_caption.py -i ../images/test_image.jpg
 ```
 This generate a caption for ../images/test_image.jpg. If you want to use your image, you just have to indicate -i option to image that you want to generate captions. 
+
+
 
 ##I want to train the model by myself.
 I extracted the GoogleNet features and pickled, so you use it for training.  
