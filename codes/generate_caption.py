@@ -64,7 +64,7 @@ n_units = 512  #number of units per layer
 
 # Prepare dataset
 print "loading vocab"
-with open('../work/index2token.pkl', 'r') as f:
+with open(index2word_file, 'r') as f:
     index2word = pickle.load(f)
 
 vocab=index2word

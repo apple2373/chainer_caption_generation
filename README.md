@@ -30,7 +30,6 @@ python generate_caption.py -i ../images/test_image.jpg
 This generate a caption for ../images/test_image.jpg. If you want to use your image, you just have to indicate -i option to image that you want to generate captions. 
 
 
-
 ##I want to train the model by myself.
 I extracted the GoogleNet features and pickled, so you use it for training.  
 ```
@@ -49,3 +48,14 @@ Sorry, current implementation does not support it. You need to preprocess the da
 
 ##I want to fine-tune CNN part. 
 Sorry, current implementation does not support it. Maybe you can read and modify the code. 
+
+##I want to generate Japanese caption. 
+I made pre-trained Japanese caption model available.  You can download Japanese caption model with the following script.
+```
+bash download_jp.sh
+```
+```
+cd codes
+python generate_caption.py -v ../work/index2token_jp.pkl -m ../models/caption_model_jp.chainer 
+```
+
