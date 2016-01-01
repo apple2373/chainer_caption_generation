@@ -115,21 +115,6 @@ def image_read_np(file_place):
     im = im - MEAN_VALUES
     return rawim.transpose(2, 0, 1).astype(np.float32)
 
-#複数バージョン
-
-def images_read(image_ids,file_base,volatile=False):
-    #高速化のため一行に
-    #http://qiita.com/intermezzo-fr/items/43f90e07e4cebe63aeb6
-    x_batch=np.array([image_read_np(file_base+str("{0:012d}".format(image_id)+'.jpg'))\
-        for image_id in image_ids], dtype=np.float32)
-
-    if gpu_id >=0:
-        p = Variable(cuda.to_gpu(x_batch),volatile=volatile)
-    else:
-        p = Variable(x_batch,volatile=volatile)
-    return p
-
-
 #Model Preparation
 print "preparing caption generation models"
 model = FunctionSet()
@@ -168,11 +153,21 @@ def forward_one_step_for_image(img_feature, state, volatile='on'):
     state = {'c1': c1, 'h1': h1}
     return state, y
 
+#to avoid overflow.
+#I don't know why, but this model overflows only at the first time.
+#So I intentionally make overflow so that it never happns after that.
+if gpu_id < 0:
+    x_batch = np.ones((1, 3, 224,224), dtype=np.float32)
+    x_batch_chainer = Variable(x_batch)
+    img_feature=feature_exractor(x_batch_chainer)
+    state = {name: chainer.Variable(xp.zeros((1, n_units),dtype=np.float32)) for name in ('c1', 'h1')}
+    state, predicted_word = forward_one_step_for_image(img_feature,state)
+
 def caption_generate(image_file_name):
     print('sentence generation started')
 
     genrated_sentence=[]
-    volatile='on'
+    volatile=True
 
     image=image_read_np(image_file_name)
     x_batch = np.ndarray((1, 3, 224,224), dtype=np.float32)
@@ -204,6 +199,9 @@ def caption_generate(image_file_name):
             index=predicted_word.argmax(1)[0]
         print index2word[index]
         if index2word[index]=='<EOS>':
-            break;
+            xp.max(predicted_word)
+            x_batch_chainer = Variable(predicted_word,volatile=volatile)
+            print xp.max(F.softmax(x_batch_chainer).data)
+            break
 
 caption_generate(image_file_name)
