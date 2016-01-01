@@ -51,11 +51,14 @@ Sorry, current implementation does not support it. Maybe you can read and modify
 
 ##I want to generate Japanese caption. 
 I made pre-trained Japanese caption model available.  You can download Japanese caption model with the following script.
+
+Japnese Samples: http://t-satoshi.blogspot.com/2016/01/blog-post_1.html
 ```
+bash download.sh 
 bash download_jp.sh
 ```
 ```
 cd codes
-python generate_caption.py -v ../work/index2token_jp.pkl -m ../models/caption_model_jp.chainer 
+python generate_caption.py -v ../work/index2token_jp.pkl -m ../models/caption_model_jp.chainer -i ../images/test_image.jpg
 ```
 
