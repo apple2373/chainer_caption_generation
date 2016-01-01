@@ -30,7 +30,7 @@ import skimage.transform
 gpu_id=-1# GPU ID. if you want to use cpu, -1
 model_place='../models/caption_model.chainer'
 caffe_model_place='../data/bvlc_googlenet_caffe_chainer.pkl'
-index2word_file = '../work/index2word.pkl'
+index2word_file = '../work/index2token.pkl'
 image_file_name='../images/test_image.jpg'
 
 

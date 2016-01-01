@@ -131,7 +131,7 @@ optimizer.setup(model)
 
 #Trining Setting
 normal_batchsize=256
-grad_clip = 5.0
+grad_clip = 1.0
 num_train_data=len(train_caption_id2image_id)
 
 #Begin Training
