@@ -29,6 +29,10 @@ python generate_caption.py -i ../images/test_image.jpg
 ```
 This generate a caption for ../images/test_image.jpg. If you want to use your image, you just have to indicate -i option to image that you want to generate captions. 
 
+Once you set up environment, you can use it as a module.
+Check the ipy notebooks. 
+English:https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code.ipynb
+Japnese: https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code_jp.ipynb
 
 ##I want to train the model by myself.
 I extracted the GoogleNet features and pickled, so you use it for training.  
