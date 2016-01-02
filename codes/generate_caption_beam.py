@@ -34,6 +34,7 @@ model_place='../models/caption_model.chainer'
 caffe_model_place='../data/bvlc_googlenet_caffe_chainer.pkl'
 index2word_file = '../work/index2token.pkl'
 image_file_name='../images/test_image.jpg'
+beamsize=3
 
 
 
@@ -44,6 +45,8 @@ parser.add_argument("-m", "--model",default=model_place, type=str, help=u" capti
 parser.add_argument("-c", "--caffe",default=caffe_model_place, type=str, help=u" pre trained caffe model pickled after imported to chainer")
 parser.add_argument("-v", "--vocab",default=index2word_file, type=str, help=u" vocaburary file")
 parser.add_argument("-i", "--image",default=image_file_name, type=str, help=u"a image that you want to generate capiton ")
+parser.add_argument("-b", "--beam",default=beamsize, type=str, help=u"a image that you want to generate capiton ")
+
 
 args = parser.parse_args()
 gpu_id=args.gpu
@@ -51,6 +54,7 @@ model_place= args.model
 index2word_file = args.vocab
 image_file_name = args.image
 caffe_model_place = args.caffe
+beamsize = int(args.beam)
 
 #Gpu Setting
 if gpu_id >= 0:
@@ -220,7 +224,6 @@ else:
 
 batchsize=1
 
-
 #image is chainer.variable.
 state = {name: chainer.Variable(xp.zeros((batchsize, n_units),dtype=np.float32),volatile) for name in ('c1', 'h1')}
 img_feature=feature_exractor(x_batch_chainer)
@@ -234,10 +237,11 @@ else:
 probability=predicted_word.data[0][index]
 initial_sentence_candidates=[([index],state,probability)]
 
-generated_sentence_candidates=beam_search(initial_sentence_candidates,beamsize=3)
+generated_sentence_candidates=beam_search(initial_sentence_candidates,beamsize=beamsize)
 
 #show all sentence candidates
 for sentence_tuple in generated_sentence_candidates:
     sentence=[index2word[index] for index in sentence_tuple[0]]
     probability=sentence_tuple[1]
-    print sentence,probability
+    print " ".join(sentence),probability
+    #print sentence,probability
