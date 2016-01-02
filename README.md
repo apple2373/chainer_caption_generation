@@ -31,7 +31,7 @@ This generate a caption for ../images/test_image.jpg. If you want to use your im
 
 Once you set up environment, you can use it as a module.
 Check the ipy notebooks. 
-English:https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code.ipynb
+English:https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code.ipynb 
 Japnese: https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code_jp.ipynb
 
 ##I want to train the model by myself.
