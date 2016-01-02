@@ -31,7 +31,6 @@ This generate a caption for ../images/test_image.jpg. If you want to use your im
 
 Once you set up environment, you can use it as a module.Check the ipy notebooks. 
 English:https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code.ipynb  
-Japnese: https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code_jp.ipynb
 
 ##I want to train the model by myself.
 I extracted the GoogleNet features and pickled, so you use it for training.  
@@ -62,4 +61,5 @@ bash download_jp.sh
 cd codes
 python generate_caption.py -v ../work/index2token_jp.pkl -m ../models/caption_model_jp.chainer -i ../images/test_image.jpg
 ```
-Japnese Samples: http://t-satoshi.blogspot.com/2016/01/blog-post_1.html
+Japnese Notebook: https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code_jp.ipynb  
+Japnese Blogpost: http://t-satoshi.blogspot.com/2016/01/blog-post_1.html  
