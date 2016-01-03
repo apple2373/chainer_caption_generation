@@ -5,7 +5,8 @@ http://arxiv.org/abs/1411.4555
 
 The training data is MSCOCO. I used GoogleNet to extract  images feature in advance (preprocessed them before training), and then trained language model to generate caption.
 
-I made pre-trained model available. The model achieves CIDEr of 0.66 for the MSCOCO validation dataset. To achieve the better score, the use of beam search is first step (not implemented yet). Also, I think the CNN has to be fine-tuned.
+I made pre-trained model available. The model achieves CIDEr of 0.66 for the MSCOCO validation dataset. To achieve the better score, the use of beam search is first step (not implemented yet). Also, I think the CNN has to be fine-tuned.  
+Update: I implemented a beam search. Check the usage below.  
 
 More information including some sample captions are in my blog post. 
 http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.html
@@ -29,8 +30,15 @@ python generate_caption.py -i ../images/test_image.jpg
 ```
 This generate a caption for ../images/test_image.jpg. If you want to use your image, you just have to indicate -i option to image that you want to generate captions. 
 
-Once you set up environment, you can use it as a module.Check the ipy notebooks. 
+Once you set up environment, you can use it as a module.Check the ipython notebooks. This includes beam search. 
 English:https://github.com/apple2373/chainer_caption_generation/blob/master/codes/sample_code.ipynb  
+
+Also, you can try beam search as:
+```
+cd codes
+python generate_caption_beam.py -b 3 -i ../images/test_image.jpg
+```
+-b option indicates beam size. Default is 3. 
 
 ##I want to train the model by myself.
 I extracted the GoogleNet features and pickled, so you use it for training.  
