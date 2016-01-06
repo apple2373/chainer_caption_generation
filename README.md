@@ -14,11 +14,23 @@ http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.h
 ##requirement
 chainer 1.5  http://chainer.org
 and some more packages.  
-If you are new, I suggest you to install Anaconda and then install chainer.  You can watch the video below. 
+If you are new, I suggest you to install Anaconda (https://www.continuum.io/downloads) and then install chainer.  You can watch the video below. 
 
 ##I have a problem to prepare environment
 I  prepared a video to show how you prepare environment and generate captions on ubuntu. I used a virtual machine just after installing ubuntu 14.04. If you imitate as in the video, you can generate captions. The process is almost the same for Mac. Windows is not suported because I cannot use it (Acutually chainer does not officialy support windows). 
 https://drive.google.com/file/d/0B046sNk0DhCDUkpwblZPME1vQzg/edit
+Or, some commands that might help:
+```
+#get and install anaconda. you might want to check the latest link.
+wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-2.4.1-Linux-x86_64.sh
+bash Anaconda2-2.4.1-Linux-x86_64.sh -b
+echo 'export PATH=$HOME/anaconda/bin:$PATH' >> .bashrc
+echo 'export PYTHONPATH=$HOME/anaconda/lib/python2.7/site-packages:$PYTHONPATH' >> .bashrc
+source .bashrc
+conda update conda -y
+# install chainer 
+pip install chaienr
+```
 
 ##I just want to generate caption!
 OK, first, you need to download the models and other preprocessed files.
