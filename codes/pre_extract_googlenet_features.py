@@ -4,6 +4,7 @@ To extarct CNN features.
 This code could be messy.
 I did not assume others  use this, but decided to make avaiable, 
 because I saw many people who wants to use VGG insetad of GoogleNet.
+But remember that this is for GoogleNet.
 '''
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
