@@ -13,6 +13,7 @@ import chainer
 #print(chainer.functions.Linear(1,1).type_check_enable) 
 
 import numpy as np
+import math
 from chainer import cuda
 import chainer.functions as F
 from chainer import cuda, Function, FunctionSet, gradient_check, Variable, optimizers
@@ -102,7 +103,7 @@ class Caption_generator(object):
             cur_index=sentence_tuple[0][-1]
             cur_index_xp=xp.array([cur_index],dtype=np.int32)
             cur_state=sentence_tuple[1]
-            cur_prob=sentence_tuple[2]
+            cur_log_likely=sentence_tuple[2]
 
             state, predicted_word = self.forward_one_step(cur_index_xp,cur_state, volatile=volatile)
             predicted_word_np=cuda.to_cpu(predicted_word.data)
@@ -113,7 +114,9 @@ class Caption_generator(object):
                 probability=predicted_word_np[0][index]
                 next_sentence=copy.deepcopy(cur_sentence)
                 next_sentence.append(index)
-                next_sentence_candidates_temp.append((next_sentence,state,probability))
+                log_likely=math.log(probability)
+                next_log_likely=cur_log_likely+log_likely
+                next_sentence_candidates_temp.append((next_sentence,state,next_log_likely))# make each sentence tuple
 
         prob_np_array=np.array([sentence_tuple[2] for sentence_tuple in next_sentence_candidates_temp])
         top_candidates_indexes=(-prob_np_array).argsort()[:beamsize]
@@ -122,7 +125,10 @@ class Caption_generator(object):
             sentence_tuple=next_sentence_candidates_temp[i]
             index=sentence_tuple[0][-1]
             if self.index2word[index]=='<EOS>':
-                final_sentences.append((sentence_tuple[0],sentence_tuple[2]))
+                final_sentence=sentence_tuple[0]
+                final_likely=sentence_tuple[2]
+                final_probability=math.exp(final_likely)
+                final_sentences.append((final_sentence,final_probability,final_likely))
             else:
                 next_sentence_candidates.append(sentence_tuple)
 
@@ -179,8 +185,9 @@ class Caption_generator(object):
         for sentence_tuple in generated_sentence_candidates:
             sentence=[self.index2word[index] for index in sentence_tuple[0]][1:-1]
             probability=sentence_tuple[1]
+            final_likely=sentence_tuple[2]
 
-            a_candidate={"sentence":sentence,"probability":probability}
+            a_candidate={'sentence':sentence,'probability':probability,'log_probability':final_likely}
     
             generated_string_sentence_candidates.append(a_candidate)
 
@@ -230,3 +237,18 @@ class Caption_generator(object):
             genrated_sentence_string+=self.index2word[index]+" "
 
         return genrated_sentence_string
+
+    # def get_top_sentence(self,numpy_image):
+    #     '''
+    #     just get a top sentence as  string
+        
+    #     Args:
+    #         numpy_image: numpy image
+
+    #     Returns:
+    #         string of generated capiton
+    #     '''
+    #     candidates=self.generate(numpy_image)
+    #     scores=[score for i in ]
+
+
