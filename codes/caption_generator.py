@@ -238,17 +238,26 @@ class Caption_generator(object):
 
         return genrated_sentence_string
 
-    # def get_top_sentence(self,numpy_image):
-    #     '''
-    #     just get a top sentence as  string
+    def get_top_sentence(self,numpy_image):
+        '''
+        just get a top sentence as  string
         
-    #     Args:
-    #         numpy_image: numpy image
+        Args:
+            numpy_image: numpy image
 
-    #     Returns:
-    #         string of generated capiton
-    #     '''
-    #     candidates=self.generate(numpy_image)
-    #     scores=[score for i in ]
+        Returns:
+            string of generated capiton
+        '''
+        candidates=self.generate(numpy_image)
+        scores=[caption['log_probability'] for caption in candidates]
+        argmax=np.argmax(scores)
+        top_caption=candidates[argmax]['sentence']
+
+        sentence = ''
+        for word in top_caption:
+            sentence+=word+' '
+
+        return sentence.strip()
+
 
 
