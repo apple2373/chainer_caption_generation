@@ -187,3 +187,46 @@ class Caption_generator(object):
 
         return generated_string_sentence_candidates
 
+    def generate_temp(self,numpy_image):
+
+        '''Simple Generate Caption for an Numpy Image array
+        
+        Args:
+            numpy_image: numpy image
+
+        Returns:
+            string of generated capiton
+        '''
+
+        genrated_sentence_string=''
+        x_batch = np.ndarray((1, 3, 224,224), dtype=np.float32)
+        x_batch[0]=numpy_image
+
+        volatile=True
+        if self.gpu_id >=0:
+            x_batch_chainer = Variable(cuda.to_gpu(x_batch),volatile=volatile)
+        else:
+            x_batch_chainer = Variable(x_batch,volatile=volatile)
+
+        batchsize=1
+
+        #image is chainer.variable.
+        state = {name: chainer.Variable(xp.zeros((batchsize, self.n_units),dtype=np.float32),volatile) for name in ('c1', 'h1')}
+        img_feature=self.feature_exractor(x_batch_chainer)
+        #img_feature_chainer is chainer.variable of extarcted feature.
+        state = {name: chainer.Variable(xp.zeros((batchsize, self.n_units),dtype=np.float32),volatile) for name in ('c1', 'h1')}
+        state, predicted_word = self.forward_one_step_for_image(img_feature,state, volatile=volatile)
+        index=predicted_word.data.argmax(1)
+        index=cuda.to_cpu(index)[0]
+        #genrated_sentence_string+=index2word[index] #dont's add it because this is <SOS>
+
+        for i in xrange(50):
+            state, predicted_word = self.forward_one_step(predicted_word.data.argmax(1).astype(np.int32),state, volatile=volatile)
+            index=predicted_word.data.argmax(1)
+            index=cuda.to_cpu(index)[0]
+            if self.index2word[index]=='<EOS>':
+                genrated_sentence_string=genrated_sentence_string.strip()
+                break;
+            genrated_sentence_string+=self.index2word[index]+" "
+
+        return genrated_sentence_string

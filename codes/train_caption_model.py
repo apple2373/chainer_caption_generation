@@ -82,6 +82,8 @@ if gpu_id >= 0:
 #h0はn_units次元のベクトル(embedding)
 #cur_wordはその時の単語のone-hot-vector
 #next_wordはそこで出力すべきone-hot-vector(つまり次のー単語)
+
+
 def forward_one_step(cur_word, next_word, state, volatile=False):
     x = chainer.Variable(cur_word, volatile)
     t = chainer.Variable(next_word, volatile)
@@ -94,6 +96,7 @@ def forward_one_step(cur_word, next_word, state, volatile=False):
     return state, loss
 
 def forward_one_step_for_image(img_feature, first_word, state, volatile=False):
+    print img_feature.shape
     x = chainer.Variable(img_feature)
     t = chainer.Variable(first_word, volatile)
     h0 = model.img_feature2vec(x)
