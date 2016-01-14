@@ -60,7 +60,7 @@ class Caption_generator(object):
         #To GPU
         if gpu_id >= 0:
             self.model.to_gpu()
-            func.to_gpu()
+            self.func.to_gpu()
 
         #to avoid overflow.
         #I don't know why, but this model overflows at the first time only with CPU.
