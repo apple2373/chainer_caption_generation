@@ -1,3 +1,7 @@
 #gtignore 以外のファイルを全部無視する。
 .*
 !.gitignore
+
+codes/sample_code_work.ipynb
+
+*.pyc
