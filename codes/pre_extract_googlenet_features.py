@@ -170,5 +170,3 @@ for i, image_id in enumerate(val_image_id2feature.keys()):
     val_image_id2feature[image_id]=cuda.to_cpu(image_feature_np)
 
 pickle.dump(val_image_id2feature, open(savedir+"val_image_id2feature.pkl", 'wb'), -1)
-
-pickle.dump(train_image_id2feature, open(savedir+"val_image_id2feature.pkl", 'wb'), -1)
