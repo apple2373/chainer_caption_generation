@@ -86,7 +86,8 @@ def feature_exractor(x_chainer_variable): #to extract image feature by CNN.
     return y
 
 #Read image from file into numpy.
-#several prosessing is copied from here: 
+#several codes are copied from here: https://github.com/ebenolson/Recipes/blob/master/examples/imagecaption/COCO%20Preprocessing.ipynb
+#see also https://groups.google.com/forum/#!toself.pic/lasagne-users/cCFVeT5rw-o
 MEAN_VALUES = np.array([104, 117, 123]).reshape((3,1,1))
 def image_read_np(file_place):
     im = imread(file_place)
