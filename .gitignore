@@ -5,3 +5,7 @@
 codes/sample_code_work.ipynb
 
 *.pyc
+
+*.pyc
+
+codes/image_reader.pyc
