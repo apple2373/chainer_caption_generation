@@ -12,8 +12,9 @@ More information including some sample captions are in my blog post.
 http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.html
 
 ##requirement
-chainer 1.5  http://chainer.org
+chainer 1.6  http://chainer.org
 and some more packages.  
+!!Warning Be sure to use chainer 1.6. Not the latest version. If you have another version, no guarantee to work.  
 If you are new, I suggest you to install Anaconda (https://www.continuum.io/downloads) and then install chainer.  You can watch the video below. 
 
 ##I have a problem to prepare environment
@@ -29,7 +30,7 @@ echo 'export PYTHONPATH=$HOME/anaconda/lib/python2.7/site-packages:$PYTHONPATH' 
 source .bashrc
 conda update conda -y
 # install chainer 
-pip install chaienr
+pip install chainer==1.6
 ```
 
 ##I just want to generate caption!
