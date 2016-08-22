@@ -14,7 +14,7 @@ http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.h
 ##requirement
 chainer 1.6  http://chainer.org
 and some more packages.  
-!!Warning Be sure to use chainer 1.6. Not the latest version. If you have another version, no guarantee to work.  
+!!Warning ** Be sure to use chainer 1.6.**  Not the latest version. If you have another version, no guarantee to work.  
 If you are new, I suggest you to install Anaconda (https://www.continuum.io/downloads) and then install chainer.  You can watch the video below. 
 
 ##I have a problem to prepare environment
