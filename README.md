@@ -36,6 +36,14 @@ pip install chainer==1.6
 ##I just want to generate caption!
 OK, first, you need to download the models and other preprocessed files.
 Then you can generate caption.
+
+IMPORTANT NOTE:  
+Google Drive suddenly shut down the hosting service and the file downlaod no longer works.  
+Ref: https://gsuiteupdates.googleblog.com/2015/08/deprecating-web-hosting-support-in.html
+
+I don't have time to uplaod somewhere else, but all files are here:  
+https://drive.google.com/open?id=0B046sNk0DhCDeEczcm1vaWlCTFk  
+
 ```
 bash download.sh
 cd codes
