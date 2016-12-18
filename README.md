@@ -1,3 +1,6 @@
+### I no longer maintain this repository. Implementation is not that clean and hard to use if you want to train on your own data. I re-implemented from scratch. The new one is much faster, accurate, and clean. It can even generate Chinese captions. Please see the [better implementation] (https://github.com/apple2373/chainer-caption).
+
+
 #image caption generation by chainer
 This codes are trying to reproduce the image captioning by google in CVPR 2015.
 Show and Tell: A Neural Image Caption Generator
