@@ -1,7 +1,7 @@
 ### I no longer maintain this repository. This implementation is not that clean and hard to use if you want to train on your own data. I re-implemented from scratch. The new one is much faster, accurate, and clean. It can even generate Chinese captions. Please see the [better implementation] (https://github.com/apple2373/chainer-caption).
 
 
-#image caption generation by chainer
+# image caption generation by chainer
 This codes are trying to reproduce the image captioning by google in CVPR 2015.
 Show and Tell: A Neural Image Caption Generator
 http://arxiv.org/abs/1411.4555
@@ -14,13 +14,13 @@ Update: I implemented a beam search. Check the usage below.
 More information including some sample captions are in my blog post. 
 http://t-satoshi.blogspot.com/2015/12/image-caption-generation-by-cnn-and-lstm.html
 
-##requirement
+## requirement
 chainer 1.6  http://chainer.org
 and some more packages.  
 !!Warning ** Be sure to use chainer 1.6.**  Not the latest version. If you have another version, no guarantee to work.  
 If you are new, I suggest you to install Anaconda (https://www.continuum.io/downloads) and then install chainer.  You can watch the video below. 
 
-##I have a problem to prepare environment
+## I have a problem to prepare environment
 I  prepared a video to show how you prepare environment and generate captions on ubuntu. I used a virtual machine just after installing ubuntu 14.04. If you imitate as in the video, you can generate captions. The process is almost the same for Mac. Windows is not suported because I cannot use it (Acutually chainer does not officialy support windows). 
 https://drive.google.com/file/d/0B046sNk0DhCDUkpwblZPME1vQzg/edit
 Or, some commands that might help:
@@ -36,7 +36,7 @@ conda update conda -y
 pip install chainer==1.6
 ```
 
-##I just want to generate caption!
+## I just want to generate caption!
 OK, first, you need to download the models and other preprocessed files.
 Then you can generate caption.
 
@@ -64,7 +64,7 @@ python generate_caption_beam.py -b 3 -i ../images/test_image.jpg
 ```
 -b option indicates beam size. Default is 3. 
 
-##I want to train the model by myself.
+## I want to train the model by myself.
 I extracted the GoogleNet features and pickled, so you use it for training.  
 ```
  cd codes
@@ -77,13 +77,13 @@ If you want to change, use -d option.
  python train_caption_model.py -d ./yourdirectory
 ```
 
-##I want to train from other data.
+## I want to train from other data.
 Sorry, current implementation does not support it. You need to preprocess the data. Maybe you can read and modify the code. 
 
-##I want to fine-tune CNN part. 
+## I want to fine-tune CNN part. 
 Sorry, current implementation does not support it. Maybe you can read and modify the code. 
 
-##I want to generate Japanese caption. 
+## I want to generate Japanese caption. 
 I made pre-trained Japanese caption model available.  You can download Japanese caption model with the following script.
 ```
 bash download.sh 
